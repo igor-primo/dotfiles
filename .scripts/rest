@@ -1,0 +1,5 @@
+#!/bin/sh
+
+herbe "Rest for $1 seconds."
+sleep $1
+herbe "$1 seconds have passed. $2"
