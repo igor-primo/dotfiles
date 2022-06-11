@@ -11,7 +11,7 @@ while true;
 do
 	# fetching section
 	bat=$(acpi | awk '{print $4}' | tr -d ',')
-	is_charging=$(acpi | awk '{print $2}')
+	is_charging=$(acpi | awk '{print $3}' | tr -d ',')
 	batnum=$(echo $bat | tr -d '%')
 	wlan=$(ip add | grep "inet\ .*wlan0" | awk '{print $2}')
 	disk_usd=$(df -h | grep root | awk '{print $5}')
@@ -22,7 +22,8 @@ do
 	echo "Battery: $bat    Wlan: $wlan    Disk Usage: $disk_usd    Total RAM: $mem_tot    Used RAM: $mem_usd"
 
 	# notification section
-	if [ $batnum -le 20 && $is_charging -ne "Charging"]; then
+	if [ $batnum -le 20 ] && [ $is_charging != "Charging" ]
+	then
 		herbe "Battery ending: $bat"
 	fi
 
