@@ -10,4 +10,6 @@ FILES="$FILES $HOME/.source"
 FILES="$FILES $HOME/.tmux.conf"
 FILES="$FILES $HOME/.xinitrc"
 
-cp -r $FILES .
+cp -r $FILES ./
+
+git add . && git commit -m 'update' && git push

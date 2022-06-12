@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git pull
+
 FILES=".spectrwm.conf"
 FILES="$FILES .vimrc"
 FILES="$FILES .bashrc"
