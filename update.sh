@@ -12,4 +12,4 @@ FILES="$FILES $HOME/.xinitrc"
 
 cp -r $FILES ./
 
-git add . && git commit -m 'update' && git push
+git add . ; git commit -m 'update' ; git push
