@@ -27,5 +27,20 @@ do
 		herbe "Battery ending: $bat"
 	fi
 
+    # useful stuff
+
+    # correct backlight when plugged to energy
+    amd="/sys/class/backlight/amdgpu_bl0"
+    other=""
+    if [ -d $amd ] && [ $(cat $amd/brightness) -lt 100 ] 
+    then
+        if [ -w $amd/brightness ]
+        then
+            echo "100" > $amd/brightness
+        else 
+            herbe "$amd/brightness not writable!"
+        fi
+    fi
+
 	sleep 10
 done
