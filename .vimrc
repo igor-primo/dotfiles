@@ -1,5 +1,8 @@
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set textwidth=79
+set expandtab
 set encoding=utf-8
 set path+=**
 set wildmenu
@@ -10,11 +13,15 @@ set number
 set relativenumber
 set hidden
 set autoindent
+set mouse=a
+set cursorline
+set hlsearch
+set ignorecase
+set smartcase
 colorscheme zellner
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
-
 
 " Personal maps
 nnoremap <leader>h :bprevious<CR>
