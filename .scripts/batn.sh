@@ -31,21 +31,15 @@ do
 
     # correct backlight when plugged to energy
     amd="/sys/class/backlight/amdgpu_bl0"
-    intel="/sys/class/backlight/intel_backlight"
-    if [ -d $amd ] && [ $(cat $amd/brightness) -lt 100 ]; then
-        if [ -w $amd/brightness ]; then
+    other=""
+    if [ -d $amd ] && [ $(cat $amd/brightness) -lt 100 ] 
+    then
+        if [ -w $amd/brightness ]
+        then
             echo "100" > $amd/brightness
         else 
             herbe "$amd/brightness not writable!"
         fi
-    elif [ -d $intel ] && [ $(cat $intel/brightness) -lt 4650 ]; then
-        if [ -w $intel/brightness ]; then
-            echo "4650" > $intel/brightness
-        else
-            herbe "$intel/brightness not writable!"
-        fi
-    else
-        echo ''
     fi
 
 	sleep 10

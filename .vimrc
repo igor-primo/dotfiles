@@ -1,3 +1,5 @@
+filetype plugin indent on
+syntax on
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -6,9 +8,6 @@ set expandtab
 set encoding=utf-8
 set path+=**
 set wildmenu
-filetype plugin indent on
-syntax on
-set rtp+=$HOME/.vim/bundle/Vundle.vim
 set number
 set relativenumber
 set hidden
@@ -18,10 +17,15 @@ set cursorline
 set hlsearch
 set ignorecase
 set smartcase
-colorscheme zellner
+
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+let g:netrw_browse_split=0
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+
+colorscheme zellner
 
 " Personal maps
 nnoremap <leader>h :bprevious<CR>
@@ -70,18 +74,19 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
-Bundle 'zyedidia/literate.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'benekastah/neomake'
-Bundle 'pangloss/vim-javascript'
+" Bundle 'zyedidia/literate.vim'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'benekastah/neomake'
+" Bundle 'pangloss/vim-javascript'
 "Plugin 'preservim/nerdtree'
 call vundle#end()
 
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'leafgarland/typescript-vim'
+" Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 let g:coc_global_extensions = ['coc-tsserver']
 
