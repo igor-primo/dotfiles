@@ -1,5 +1,0 @@
-#!/bin/sh
-
-herbe "Work for $1 seconds"
-sleep $1
-herbe "$1 seconds have passed. $2"
