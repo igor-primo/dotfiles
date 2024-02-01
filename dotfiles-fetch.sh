@@ -24,4 +24,4 @@ _arr+=("/home/$USER/bg.jpg")
 # Scripts
 _arr+=($(find /home/$USER/scripts))
 
-tar cvPf $_destfile ${_arr[@]} && git add . && git commit -m 'atualização' && git push
+tar cvPf $_destfile ${_arr[@]} && xz -9 $_destfile && git add . && git commit -m 'atualização' && git push
