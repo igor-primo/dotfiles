@@ -18,6 +18,7 @@ _arr+=("/home/$USER/.cwmrc")
 _arr+=("/home/$USER/.emacs.d/init.el")
 _arr+=("/home/$USER/.xinitrc")
 _arr+=("/home/$USER/.Xresources")
+_arr+=("/home/$USER/.spectrwm.conf")
 
 # Bins
 _arr+=("/home/$USER/bg.jpg")
