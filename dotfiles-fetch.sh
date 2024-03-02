@@ -6,6 +6,8 @@
 # emacs
 # rofi
 # picom
+# spectrwm
+# neovim
 
 _destfile="./dotfiles-$(date +%F).tar"
 
@@ -19,6 +21,7 @@ _arr+=("/home/$USER/.emacs.d/init.el")
 _arr+=("/home/$USER/.xinitrc")
 _arr+=("/home/$USER/.Xresources")
 _arr+=("/home/$USER/.spectrwm.conf")
+_arr+=("/home/$USER/.config/nvim/init.lua")
 
 # Bins
 _arr+=("/home/$USER/bg.jpg")
