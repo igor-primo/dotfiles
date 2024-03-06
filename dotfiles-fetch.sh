@@ -2,7 +2,6 @@
 
 # Programs:
 # dunst
-# 2bwm
 # emacs
 # rofi
 # picom
@@ -14,7 +13,6 @@ _destfile="./dotfiles-$(date +%F).tar"
 # Configs
 _arr=("/home/$USER/.config/dunst/dunstrc")
 _arr+=("/home/$USER/.config/rofi/config.rasi")
-_arr+=("/home/$USER/repos/2bwm/config.h")
 _arr+=("/home/$USER/.picom.conf")
 _arr+=("/home/$USER/.cwmrc")
 _arr+=("/home/$USER/.emacs.d/init.el")
