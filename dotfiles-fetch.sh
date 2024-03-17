@@ -20,6 +20,7 @@ _arr+=("/home/$USER/.xinitrc")
 _arr+=("/home/$USER/.Xresources")
 _arr+=("/home/$USER/.spectrwm.conf")
 _arr+=("/home/$USER/.tmux.conf")
+_arr+=("/home/$USER/.bashrc")
 _arr+=("/home/$USER/.config/nvim/")
 
 # Bins
