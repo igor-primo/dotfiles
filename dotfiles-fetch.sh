@@ -23,9 +23,6 @@ _arr+=("/home/$USER/.tmux.conf")
 _arr+=("/home/$USER/.bashrc")
 _arr+=("/home/$USER/.config/nvim/")
 
-# Bins
-_arr+=("/home/$USER/bg.jpg")
-
 # Scripts
 _arr+=($(find /home/$USER/scripts))
 
