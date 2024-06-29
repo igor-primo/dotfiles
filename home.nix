@@ -85,10 +85,17 @@
     ".picom.conf".source = dotfiles/picom.conf;
     ".xinitrc".source = dotfiles/xinitrc;
     ".zshrc".source = dotfiles/zshrc;
+    ".cwmrc".source = dotfiles/cwmrc;
+    ".spectrwm.conf".source = dotfiles/spectrwm.conf;
+    ".vimrc".source = dotfiles/vimrc;
+    ".xmobarrc".source = dotfiles/xmobarrc;
+
     ".gitconfig".source = dotfiles/gitconfig;
     ".gitignore_global".source = dotfiles/gitignore_global;
+
     ".config/dunst/dunstrc".source = dotfiles/dunstrc;
     ".config/rofi/config.rasi".source = dotfiles/config.rasi;
+
     ".config/doom/config.el".source = dotfiles/doom/config.el;
     ".config/doom/custom.el".source = dotfiles/doom/custom.el;
     ".config/doom/init.el".source = dotfiles/doom/init.el;
