@@ -1,0 +1,10 @@
+[credential]
+	helper = store
+[user]
+	mail = igorprimo62@gmail.com
+	name = igor-primo
+	email = igorprimo62@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /home/igor/.gitignore_global
