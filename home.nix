@@ -48,6 +48,26 @@
     # '')
   ];
 
+  xsession = {
+    enable = true;
+    windowManager.command = "xmonad";
+    initExtra = "
+      setxkbmap br
+      setxkbmap -option ctrl:swapcaps
+      /usr/bin/xset r rate 250 60
+      xset fp+ ~/.nix-profile/share/fonts/truetype/NerdFonts
+      feh --bg-fill ~/bg.png
+
+      picom --config ~/.picom.conf & disown
+      emacs --daemon & disown
+      dunst & disown
+      xscreensaver & disown
+      xbanish & disown
+      acpinot & disown
+      redshift -l 10.5:37.4 -t 5700:2500 -g 0.8 -m randr -v & disown
+    ";
+  };
+
   imports = [ ./zsh.nix ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
