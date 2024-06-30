@@ -40,6 +40,11 @@
     # # fonts?
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
 
+    (pkgs.st.overrideAttrs (oldAttrs: rec {
+    configFile = pkgs.writeText "config.def.h" (builtins.readFile ./dotfiles/config.h);
+    postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
+    }))
+
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
