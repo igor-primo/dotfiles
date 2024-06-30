@@ -106,6 +106,10 @@
     ".config/doom/init.el".source = dotfiles/doom/init.el;
     ".config/doom/packages.el".source = dotfiles/doom/packages.el;
 
+    ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
+
+    "bg.png".source = dotfiles/bg.png;
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose

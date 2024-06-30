@@ -73,7 +73,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "input" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      chromium
       tree
     ];
   };
