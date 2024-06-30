@@ -28,6 +28,8 @@
     pkgs.zsh
     pkgs.dunst
     pkgs.rofi
+    pkgs.feh
+    pkgs.direnv
     pkgs.xscreensaver
     pkgs.xbanish
     pkgs.redshift
