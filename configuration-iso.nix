@@ -1,17 +1,26 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, self, ... }:
 
 {
 
+  imports = [
+    "${modulesPath}/profiles/base.nix"
+    "${modulesPath}/profiles/all-hardware.nix"
+    "${modulesPath}/installer/cd-dvd/iso-image.nix"
+    "${modulesPath}/installer/cd-dvd/channel.nix"
+  ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  isoImage.makeEfiBootable = true;
+  isoImage.makeUsbBootable = true;
+
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Brazil/East";
 
   i18n.defaultLocale = "pt_BR.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkb.options in tty.
+    useXkbConfig = true;
   };
 
   services.xserver.enable = true;
@@ -49,7 +58,7 @@
   services.getty.autologinUser = lib.mkOverride 999 "root";
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git
   ];
