@@ -61,7 +61,7 @@
     initExtra = "
       setxkbmap br
       setxkbmap -option ctrl:swapcaps
-      /usr/bin/xset r rate 250 60
+      xset r rate 250 60
       xset fp+ ~/.nix-profile/share/fonts/truetype/NerdFonts
       feh --bg-fill ~/bg.png
 
