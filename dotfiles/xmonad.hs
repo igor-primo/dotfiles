@@ -5,9 +5,7 @@ import XMonad
 import XMonad.Util.EZConfig
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.MultiColumns
 import XMonad.Layout.TwoPane
 import qualified XMonad.Util.Hacks as Hacks
 
@@ -19,7 +17,7 @@ main = do
           , borderWidth = 3
           , normalBorderColor = "#4f3928"
           , focusedBorderColor = "#ebe9e7"
-          , layoutHook = spacingWithEdge 15 $ gaps [(U, 15)] $ TwoPane (3/100) (1/2) ||| ResizableTall 1 (3/100) (1/2) [] ||| Full ||| ThreeColMid 1 (3/100) (1/2) ||| ThreeCol 1 (3/100) (1/2)
+          , layoutHook = spacingWithEdge 15 $ gaps [(U, 5)] $ TwoPane (3/100) (1/2) ||| Full ||| ResizableTall 1 (3/100) (1/2) []
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
           }
           `additionalKeysP`
