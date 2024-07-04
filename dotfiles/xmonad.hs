@@ -17,7 +17,7 @@ main = do
           , borderWidth = 3
           , normalBorderColor = "#4f3928"
           , focusedBorderColor = "#ebe9e7"
-          , layoutHook = spacingWithEdge 15 $ gaps [(U, 5)] $ TwoPane (3/100) (1/2) ||| Full ||| ResizableTall 1 (3/100) (1/2) []
+          , layoutHook = spacingWithEdge 5 $ TwoPane (3/100) (1/2) ||| Full ||| ResizableTall 1 (3/100) (1/2) []
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
           }
           `additionalKeysP`
