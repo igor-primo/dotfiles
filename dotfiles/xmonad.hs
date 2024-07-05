@@ -29,5 +29,7 @@ main = do
           , ("M-z", sendMessage MirrorExpand)
           , ("M-y", spawn "youtube.sh")
           , ("M-w", spawn "rofi -drun-use-desktop-cache -show combi")
+          , ("M-p", spawn "pomo.sh")
+          , ("M-o", spawn "pkill -f pomo.sh")
           ]
    

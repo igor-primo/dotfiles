@@ -109,6 +109,7 @@
     ".config/doom/packages.el".source = dotfiles/doom/packages.el;
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
+    ".scripts/pomo.sh".source = dotfiles/pomo.sh;
 
     "bg.png".source = dotfiles/bg.png;
 
