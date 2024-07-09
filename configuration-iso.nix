@@ -9,6 +9,8 @@
     "${modulesPath}/installer/cd-dvd/channel.nix"
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
 
@@ -45,9 +47,12 @@
 
   users.users.root.password = "nixos";
 
+  programs.zsh.enable = true;
+
   users.users.igor = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "input" "audio" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+    extraGroups = [ "wheel" "video" "input" "audio" ];
     packages = with pkgs; [
       tree
     ];
@@ -61,6 +66,7 @@
     vim
     wget
     git
+    tmux
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?

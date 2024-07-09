@@ -23,7 +23,7 @@ main = do
           `additionalKeysP`
           [ ("M-x", spawn "xscreensaver-command -lock")
           , ("M-C-s", unGrab *> spawn "xfce4-screenshooter")
-          , ("M-s", spawn "chromium-browser")
+          , ("M-s", spawn "firefox")
           , ("M-e", spawn "emacsclient -c")
           , ("M-a", sendMessage MirrorShrink)
           , ("M-z", sendMessage MirrorExpand)
@@ -31,5 +31,7 @@ main = do
           , ("M-w", spawn "rofi -drun-use-desktop-cache -show combi")
           , ("M-p", spawn "pomo.sh")
           , ("M-o", spawn "pkill -f pomo.sh")
+          , ("M-n", spawn "dunstctl history-pop")
+          , ("M-m", spawn "dunstctl close")
           ]
    

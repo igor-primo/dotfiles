@@ -34,7 +34,10 @@
     pkgs.xbanish
     pkgs.redshift
     pkgs.emacs
+    pkgs.libnotify
     pkgs.chromium
+    pkgs.firefox
+    pkgs.ripgrep
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -107,6 +110,7 @@
     ".config/doom/custom.el".source = dotfiles/doom/custom.el;
     ".config/doom/init.el".source = dotfiles/doom/init.el;
     ".config/doom/packages.el".source = dotfiles/doom/packages.el;
+    ".config/doom/koma.el".source = dotfiles/doom/koma.el;
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
     ".scripts/pomo.sh".source = dotfiles/pomo.sh;
