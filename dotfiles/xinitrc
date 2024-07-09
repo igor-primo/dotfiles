@@ -12,6 +12,6 @@ xbanish & disown
 acpinot & disown
 redshift -l 10.5:37.4 -t 5700:2500 -g 0.8 -m randr -v & disown
 
-chromium-browser & disown
+firefox & disown
 
 exec xmonad
