@@ -16,7 +16,9 @@ import qualified Data.Map.Strict as M
 import qualified XMonad.StackSet as W
 
 import XMonad.Actions.TopicSpace
+import XMonad.Prompt
 import XMonad.Prompt.Workspace
+import XMonad.Prompt.FuzzyMatch
 
 import qualified XMonad.Util.Hacks as Hacks
 
@@ -49,8 +51,8 @@ main = do
           , ("M-o", spawn "pkill -f pomo.sh")
           , ("M-n", spawn "dunstctl history-pop")
           , ("M-m", spawn "dunstctl close")
-          , ("M-/", switchProjectPrompt def)
-          , ("M-;", shiftToProjectPrompt def)
+          , ("M-/", switchProjectPrompt myXPConfig)
+          , ("M-;", shiftToProjectPrompt myXPConfig)
           -- , ("M-/" , promptedGoto)
           -- , ("M-;" , promptedShift)
           ]
@@ -91,6 +93,10 @@ projects =
 
 workspaceNames :: [Project] -> [String]
 workspaceNames = map projectName
+
+myXPConfig = def { searchPredicate = fuzzyMatch
+                 , sorter          = fuzzySort
+                 }
 
 spawnTCC :: X ()
 spawnTCC = spawn "st"
