@@ -35,7 +35,6 @@
     pkgs.redshift
     pkgs.emacs
     pkgs.libnotify
-    pkgs.chromium
     pkgs.firefox
     pkgs.ripgrep
     pkgs.lorri
