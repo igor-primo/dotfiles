@@ -17,6 +17,8 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+
+
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -46,8 +48,8 @@
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
 
     (pkgs.st.overrideAttrs (oldAttrs: rec {
-    configFile = pkgs.writeText "config.def.h" (builtins.readFile ./dotfiles/config.h);
-    postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
+      configFile = pkgs.writeText "config.def.h" (builtins.readFile ./dotfiles/config.h);
+      postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
     }))
 
     # # You can also create simple shell scripts directly inside your
@@ -56,7 +58,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    (builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
   ];
+
 
   xsession = {
     enable = true;

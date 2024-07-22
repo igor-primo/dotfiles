@@ -99,14 +99,14 @@ myXPConfig = def { searchPredicate = fuzzyMatch
                  }
 
 spawnTCC :: X ()
-spawnTCC = spawn "st"
+spawnTCC = spawn "st -e zsh -i  -c tmux"
          *> spawn "firefox"
-         *> spawn "emacsclient -c ~/repos/tcc-2024"
+        -- *> spawn "emacsclient -c ~/repos/tcc-2024"
 
 spawnBoilpage :: X ()
-spawnBoilpage = spawn "st"
+spawnBoilpage = spawn "st -e zsh -i -c tmux"
               *> spawn "firefox"
-              *> spawn "emacsclient -c ~/repos/boilpage"
+              -- *> spawn "emacsclient -c ~/repos/boilpage"
 
 -- spawnEditorInTopic :: X ()
 -- spawnEditorInTopic = proc $ inEditor >-$ currentTopicDir myTopicConfig
