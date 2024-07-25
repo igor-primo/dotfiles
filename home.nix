@@ -60,7 +60,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    (builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
+    #(builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
+    (builtins.getFlake "path:/home/igor/repos/nixvim").packages.x86_64-linux.default
   ];
 
 
@@ -79,7 +80,7 @@
       xscreensaver & disown
       xbanish & disown
       acpinot & disown
-      redshift -l 10.5:37.4 -t 5700:2500 -g 0.8 -m randr -v & disown
+      redshift -l 10.5:37.4 -t 5700:2500 -b 1.0:0.4 -g 0.8 -m randr -v & disown
     ";
   };
 
