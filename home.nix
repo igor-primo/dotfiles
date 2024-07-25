@@ -40,6 +40,7 @@
     pkgs.firefox
     pkgs.ripgrep
     pkgs.lorri
+    pkgs.tmux
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -74,7 +75,6 @@
       feh --bg-fill ~/bg.png
 
       picom --config ~/.picom.conf & disown
-      emacs --daemon & disown
       dunst & disown
       xscreensaver & disown
       xbanish & disown
