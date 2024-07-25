@@ -60,8 +60,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    #(builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
-    (builtins.getFlake "path:/home/igor/repos/nixvim").packages.x86_64-linux.default
+    (builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
   ];
 
 
