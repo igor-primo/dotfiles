@@ -33,7 +33,7 @@ main = do
           , focusedBorderColor = "#ebe9e7"
           -- , workspaces = workspaceNames projects
           , layoutHook =
-            spacingWithEdge 5 $  TwoPane (3/100) (1/2)
+            spacingWithEdge 10 $ gaps myGaps $  TwoPane (3/100) (1/2)
             ||| Full
             ||| ResizableTall 1 (3/100) (1/2) []
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
@@ -53,7 +53,28 @@ main = do
           , ("M-m", spawn "dunstctl close")
           , ("M-/", switchProjectPrompt myXPConfig)
           , ("M-;", shiftToProjectPrompt myXPConfig)
+          , ("M-f", increaseGapHor)
+          , ("M-g", diminishGapHor)
+          , ("M-v", increaseGapVer)
+          , ("M-b", diminishGapVer)
           ]
+          where 
+          increaseGapHor = do
+            _ <- sendMessage (IncGap 5 U)
+            _ <- sendMessage (IncGap 5 D)
+            pure () 
+          diminishGapHor  = do
+            _ <- sendMessage (DecGap 5 U)
+            _ <- sendMessage (DecGap 5 D)
+            pure () 
+          increaseGapVer = do
+            _ <- sendMessage (IncGap 5 R)
+            _ <- sendMessage (IncGap 5 L)
+            pure ()
+          diminishGapVer = do
+            _ <- sendMessage (DecGap 5 R)
+            _ <- sendMessage (DecGap 5 L)
+            pure ()
 
 -- Dynamics Workspaces stuff
 
@@ -65,11 +86,11 @@ projects =
             }
   , Project { projectName      = "2:dotfiles"
             , projectDirectory = "~/.config/home-manager"
-            , projectStartHook = Just (spawn "emacsclient -c ~/.config/home-manager")
+            , projectStartHook = Just (spawn "st")
             }
   , Project { projectName      = "3:journaling"
             , projectDirectory = "~/org"
-            , projectStartHook = Just (spawn "emacsclient -c ~/org")
+            , projectStartHook = Just (spawn "st")
             }
   , Project { projectName      = "4:boilpage"
             , projectDirectory = "~/repos/boilpage"
@@ -95,3 +116,5 @@ spawnTCC = spawn "st -e zsh -i -c 'tmuxinator start tcc -p tcc.yml'"
 spawnBoilpage :: X ()
 spawnBoilpage = spawn "st -e zsh -i -c tmux"
               *> spawn "firefox"
+
+myGaps = [ (U, 10), (D, 10), (R, 10), (L, 10) ]              
