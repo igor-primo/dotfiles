@@ -53,17 +53,7 @@ main = do
           , ("M-m", spawn "dunstctl close")
           , ("M-/", switchProjectPrompt myXPConfig)
           , ("M-;", shiftToProjectPrompt myXPConfig)
-          -- , ("M-/" , promptedGoto)
-          -- , ("M-;" , promptedShift)
           ]
-          -- ++
-          -- -- The following does two things:
-          -- --   1. Switch topics (no modifier)
-          -- --   2. Move focused window to topic N (shift modifier)
-          -- [ ("M-" ++ m ++ k, f i)
-          -- | (i, k) <- zip (topicNames topicItems) (map show [1 .. 9 :: Int])
-          -- , (f, m) <- [(goto, ""), (windows . W.shift, "S-")]
-          -- ]
 
 -- Dynamics Workspaces stuff
 
@@ -99,44 +89,9 @@ myXPConfig = def { searchPredicate = fuzzyMatch
                  }
 
 spawnTCC :: X ()
-spawnTCC = spawn "st -e zsh -i  -c tmux"
+spawnTCC = spawn "st -e zsh -i -c 'tmuxinator start tcc -p tcc.yml'"
          *> spawn "firefox"
-        -- *> spawn "emacsclient -c ~/repos/tcc-2024"
 
 spawnBoilpage :: X ()
 spawnBoilpage = spawn "st -e zsh -i -c tmux"
               *> spawn "firefox"
-              -- *> spawn "emacsclient -c ~/repos/boilpage"
-
--- spawnEditorInTopic :: X ()
--- spawnEditorInTopic = proc $ inEditor >-$ currentTopicDir myTopicConfig
-
--- spawnTermInTopic :: X ()
--- spawnTermInTopic = proc inTerm
-
--- executeInTopic :: String -> X ()
--- executeInTopic p = proc $ (termInDir >-$ currentTopicDir myTopicConfig)
---                       >-> execute p
-
--- topicItems :: [TopicItem]
--- topicItems =
---   [ inHome "1:WEB" (spawn "firefox")
---   , TI "2:Boilpage" "repos/boilpage" spawnBoilpage
---   ]
-
--- myTopicConfig :: TopicConfig
--- myTopicConfig = def
---   { topicDirs          = tiDirs    topicItems
---   , topicActions       = tiActions topicItems
---   , defaultTopicAction = const (pure ())
---   , defaultTopic       = "1:WEB"         -- fallback
---   }
-
--- goto :: Topic -> X ()
--- goto = switchTopic myTopicConfig
-
--- promptedGoto :: X ()
--- promptedGoto = workspacePrompt def goto
-
--- promptedShift :: X ()
--- promptedShift = workspacePrompt def $ windows . W.shift
