@@ -80,7 +80,7 @@
       xscreensaver & disown
       xbanish & disown
       acpinot & disown
-      redshift -l 10.5:37.4 -t 5700:2500 -b 1.0:0.4 -g 0.8 -m randr -v & disown
+      redshift -l 10.5:37.4 -t 5700:2500 -b 1.0:0.6 -g 0.8 -m randr -v & disown
     ";
   };
 
