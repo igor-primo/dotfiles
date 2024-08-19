@@ -5,7 +5,7 @@ moveamount 7
 
 ignore polybar
 
-gap 5 5 5 5
+#gap 5 5 5 5
 
 color activeborder gray
 color inactiveborder black
@@ -122,7 +122,7 @@ bind-key 4S-9		window-movetogroup-9
 bind-key 4-y  window-htile
 bind-key 4-t  window-vtile
 
-bind-key 4-s chromium-browser
+bind-key 4-s firefox
 bind-key 4-w "rofi -drun-use-desktop-cache -show combi"
 bind-key 4-c "dunstctl history-pop"
 bind-key 4-v "dunstctl close"

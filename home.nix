@@ -38,10 +38,13 @@
     pkgs.emacs
     pkgs.libnotify
     pkgs.firefox
+    pkgs.chromium
     pkgs.ripgrep
     pkgs.lorri
     pkgs.tmux
     pkgs.tmuxinator
+    pkgs.pandoc
+    pkgs.devenv
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -61,7 +64,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    (builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
+    #(builtins.getFlake "github:igor-primo/nixvim-elegant").packages.x86_64-linux.default
+    (builtins.getFlake "path:/home/igor/repos/nixvim").packages.x86_64-linux.default
   ];
 
 
@@ -75,12 +79,12 @@
       xset fp+ ~/.nix-profile/share/fonts/truetype/NerdFonts
       feh --bg-fill ~/bg.png
 
-      picom --config ~/.picom.conf & disown
+      #picom --config ~/.picom.conf & disown
       dunst & disown
       xscreensaver & disown
       xbanish & disown
       acpinot & disown
-      redshift -l 10.5:37.4 -t 5700:2500 -b 1.0:0.6 -g 0.8 -m randr -v & disown
+      redshift -l 10.5:37.4 -t 5700:4000 -b 1.0:0.6 -g 0.8 -m randr -v & disown
     ";
   };
 

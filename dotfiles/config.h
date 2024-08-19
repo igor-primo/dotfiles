@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 // static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "InconsolataNerdFontMono:pixelsize=16";
+static char *font = "InconsolataNerdFontMono-Bold:pixelsize=20";
 static int borderpx = 25;
 
 /*

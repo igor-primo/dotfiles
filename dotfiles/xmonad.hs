@@ -8,6 +8,8 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.TwoPane
+import XMonad.Layout.Magnifier
+import XMonad.Layout.ThreeColumns
 
 import XMonad.Actions.DynamicProjects
 import XMonad.ManageHook
@@ -24,39 +26,43 @@ import qualified XMonad.Util.Hacks as Hacks
 
 main :: IO ()
 main = do
-     xmonad $ dynamicProjects projects def
+     -- xmonad $ dynamicProjects projects def
+     xmonad $ def
           { modMask = mod4Mask
           , terminal = "st"
-          , workspaces = workspaceNames projects
+          , workspaces = [ "1" ]
           , borderWidth = 3
           , normalBorderColor = "#4f3928"
           , focusedBorderColor = "#ebe9e7"
-          -- , workspaces = workspaceNames projects
           , layoutHook =
-            spacingWithEdge 10 $ gaps myGaps $  TwoPane (3/100) (1/2)
+            -- spacingWithEdge 10 $ gaps myGaps $  
+            magnifier (TwoPane (3/100) (1/2))
+            ||| magnifier (ResizableTall 1 (3/100) (1/2) [])
+            ||| magnifier (ThreeColMid 1 (3/100) (1/2))
+            ||| magnifier (ThreeCol 1 (3/100) (1/2))
             ||| Full
-            ||| ResizableTall 1 (3/100) (1/2) []
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
           }
           `additionalKeysP`
           [ ("M-x", spawn "xscreensaver-command -lock")
           , ("M-C-s", unGrab *> spawn "xfce4-screenshooter")
           , ("M-s", spawn "firefox")
-          , ("M-e", spawn "emacsclient -c")
           , ("M-a", sendMessage MirrorShrink)
           , ("M-z", sendMessage MirrorExpand)
-          , ("M-y", spawn "youtube.sh")
+          , ("M-y", spawn "bash youtube.sh")
           , ("M-w", spawn "rofi -drun-use-desktop-cache -show combi")
-          , ("M-p", spawn "pomo.sh")
+          , ("M-p", spawn "bash pomo.sh")
           , ("M-o", spawn "pkill -f pomo.sh")
           , ("M-n", spawn "dunstctl history-pop")
           , ("M-m", spawn "dunstctl close")
-          , ("M-/", switchProjectPrompt myXPConfig)
-          , ("M-;", shiftToProjectPrompt myXPConfig)
+--          , ("M-/", switchProjectPrompt myXPConfig)
+--          , ("M-;", shiftToProjectPrompt myXPConfig)
           , ("M-f", increaseGapHor)
           , ("M-g", diminishGapHor)
           , ("M-v", increaseGapVer)
           , ("M-b", diminishGapVer)
+          , ("M-[", sendMessage MagnifyMore)
+          , ("M-]", sendMessage MagnifyLess)
           ]
           where 
           increaseGapHor = do
@@ -111,10 +117,11 @@ myXPConfig = def { searchPredicate = fuzzyMatch
 
 spawnTCC :: X ()
 spawnTCC = spawn "st -e zsh -i -c 'tmuxinator start tcc -p tcc.yml'"
+         *> spawn "st -e zsh -i -c nvim"
          *> spawn "firefox"
 
 spawnBoilpage :: X ()
-spawnBoilpage = spawn "st -e zsh -i -c tmux"
-              *> spawn "firefox"
+spawnBoilpage = spawn "st -e zsh -i -c 'tmuxinator start boilpage -p boilpage.yml'"
+              *> spawn "st -e zsh -i -c nvim"
 
-myGaps = [ (U, 10), (D, 10), (R, 10), (L, 10) ]              
+-- myGaps = [ (U, 10), (D, 10), (R, 10), (L, 10) ]              
