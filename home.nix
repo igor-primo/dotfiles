@@ -45,6 +45,8 @@
     pkgs.tmuxinator
     pkgs.pandoc
     pkgs.devenv
+    pkgs.vscodium
+    pkgs.tor-browser-bundle-bin
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

@@ -12,6 +12,7 @@ import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 
 import XMonad.Actions.DynamicProjects
+import XMonad.Util.NamedScratchpad
 import XMonad.ManageHook
 
 import qualified Data.Map.Strict as M
@@ -30,12 +31,13 @@ main = do
      xmonad $ def
           { modMask = mod4Mask
           , terminal = "st"
+          , manageHook = namedScratchpadManageHook scratchpads
           , workspaces = [ "1" ]
           , borderWidth = 3
           , normalBorderColor = "#4f3928"
           , focusedBorderColor = "#ebe9e7"
           , layoutHook =
-            -- spacingWithEdge 10 $ gaps myGaps $  
+            gaps myGaps $  
             magnifier (TwoPane (3/100) (1/2))
             ||| magnifier (ResizableTall 1 (3/100) (1/2) [])
             ||| magnifier (ThreeColMid 1 (3/100) (1/2))
@@ -63,6 +65,7 @@ main = do
           , ("M-b", diminishGapVer)
           , ("M-[", sendMessage MagnifyMore)
           , ("M-]", sendMessage MagnifyLess)
+          , ("M-/", namedScratchpadAction scratchpads "processes")
           ]
           where 
           increaseGapHor = do
@@ -124,4 +127,9 @@ spawnBoilpage :: X ()
 spawnBoilpage = spawn "st -e zsh -i -c 'tmuxinator start boilpage -p boilpage.yml'"
               *> spawn "st -e zsh -i -c nvim"
 
--- myGaps = [ (U, 10), (D, 10), (R, 10), (L, 10) ]              
+myGaps = [ (U, 10), (D, 10), (R, 10), (L, 10) ]              
+
+scratchpads = [ NS "processes" "st -e zsh -i -c nvim ~/repos" (title =? "zsh") myFloat ]
+  where myFloat = customFloating $ W.RationalRect sixth sixth third third
+        sixth = 1 / 6
+        third = 2 / 3
