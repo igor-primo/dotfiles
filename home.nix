@@ -46,6 +46,8 @@
     pkgs.pandoc
     pkgs.devenv
     pkgs.vscodium
+    pkgs.alacritty
+    pkgs.kitty
     pkgs.tor-browser-bundle-bin
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -126,6 +128,7 @@
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
     ".scripts/pomo.sh".source = dotfiles/pomo.sh;
+    ".scripts/kitty.sh".source = dotfiles/kitty.sh;
 
     "bg.png".source = dotfiles/bg.png;
 

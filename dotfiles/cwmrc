@@ -130,9 +130,9 @@ bind-key 4S-p "xscreensaver-command -lock"
 bind-key 4-e "emacsclient -c"
 bind-key 4-a youtube.sh
 
-bind-key 4SC-Return st
+bind-key 4SC-Return kitty.sh
 
-command terminal st
+command terminal kitty.sh
 command chromium chromium-browser
 
 wm spectrwm spectrwm
