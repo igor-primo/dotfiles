@@ -33,7 +33,7 @@
 
   xsession = {
     enable = true;
-    windowManager.command = "xmonad";
+    windowManager.command = "cwm";
     initExtra = "
       setxkbmap br
       setxkbmap -option ctrl:swapcaps
