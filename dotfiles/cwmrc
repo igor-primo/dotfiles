@@ -133,6 +133,5 @@ bind-key 4-a youtube.sh
 bind-key 4SC-Return kitty.sh
 
 command terminal kitty.sh
-command chromium chromium-browser
 
 wm spectrwm spectrwm

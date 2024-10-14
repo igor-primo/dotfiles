@@ -1,6 +1,7 @@
 -- default desktop configuration for Fedora
 
 import XMonad
+import XMonad.Config.Kde
 
 import XMonad.Util.EZConfig
 
@@ -28,20 +29,20 @@ import qualified XMonad.Util.Hacks as Hacks
 main :: IO ()
 main = do
      -- xmonad $ dynamicProjects projects def
-     xmonad $ def
-          { modMask = mod4Mask
-          , terminal = "st"
-          , manageHook = namedScratchpadManageHook scratchpads
+     xmonad $ kde4Config
+          { modMask = mod1Mask
+          , terminal = "kitty"
+          --, manageHook = manageHook kd4Config
           , workspaces = [ "1" ]
           , borderWidth = 3
           , normalBorderColor = "#4f3928"
           , focusedBorderColor = "#ebe9e7"
           , layoutHook =
             gaps myGaps $  
-            magnifier (TwoPane (3/100) (1/2))
-            ||| magnifier (ResizableTall 1 (3/100) (1/2) [])
-            ||| magnifier (ThreeColMid 1 (3/100) (1/2))
-            ||| magnifier (ThreeCol 1 (3/100) (1/2))
+            TwoPane (3/100) (1/2)
+            ||| ResizableTall 1 (3/100) (1/2) []
+            ||| ThreeColMid 1 (3/100) (1/2)
+            ||| ThreeCol 1 (3/100) (1/2)
             ||| Full
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
           }

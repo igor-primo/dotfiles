@@ -23,17 +23,19 @@
     pkgs.tmuxinator
     pkgs.pandoc
     pkgs.devenv
-    pkgs.vscodium
+    pkgs.vscode
     pkgs.alacritty
     pkgs.kitty
+    pkgs.agda
     pkgs.tor-browser-bundle-bin
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
+    pkgs.nix-tree
   ];
 
 
   xsession = {
     enable = true;
-    windowManager.command = "cwm";
+    windowManager.command = "xmonad";
     initExtra = "
       setxkbmap br
       setxkbmap -option ctrl:swapcaps
@@ -67,6 +69,7 @@
 
     ".config/dunst/dunstrc".source = dotfiles/dunstrc;
     ".config/rofi/config.rasi".source = dotfiles/config.rasi;
+    ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
     ".scripts/pomo.sh".source = dotfiles/pomo.sh;
