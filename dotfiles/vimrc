@@ -7,6 +7,9 @@ set mouse=a
 set viminfo='10,<100,:100,%,n~/.vim/.viminfo
 set incsearch
 set hlsearch
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 let Tlist_Compact_Format = 1
 let Tlist_GainFocus_On_ToggleOpen = 1

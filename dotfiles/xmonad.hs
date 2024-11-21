@@ -28,21 +28,18 @@ import qualified XMonad.Util.Hacks as Hacks
 
 main :: IO ()
 main = do
-     -- xmonad $ dynamicProjects projects def
-     xmonad $ kde4Config
-          { modMask = mod1Mask
+     xmonad $ def
+          { modMask = mod4Mask
           , terminal = "kitty"
           --, manageHook = manageHook kd4Config
           , workspaces = [ "1" ]
-          , borderWidth = 3
-          , normalBorderColor = "#4f3928"
+          , borderWidth = 2
+          , normalBorderColor = "#000000"
           , focusedBorderColor = "#ebe9e7"
           , layoutHook =
             gaps myGaps $  
             TwoPane (3/100) (1/2)
             ||| ResizableTall 1 (3/100) (1/2) []
-            ||| ThreeColMid 1 (3/100) (1/2)
-            ||| ThreeCol 1 (3/100) (1/2)
             ||| Full
           , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
           }

@@ -6,16 +6,16 @@ padding.y = 25
 # Name: Mono Theme
 
 [colors.primary]
-background = "#000000"
-foreground = "#ffffff"
-#foreground = "#000000"
-#background = "#ffffff"
+#background = "#000000"
+#foreground = "#ffffff"
+foreground = "#000000"
+background = "#ffffff"
 
 [colors.cursor]
-text = "#000000"
-cursor = "#ffffff"
-#cursor = "#000000"
-#text = "#ffffff"
+#text = "#000000"
+#cursor = "#ffffff"
+cursor = "#000000"
+text = "#ffffff"
 
 [colors.normal]
 black = "#000000"

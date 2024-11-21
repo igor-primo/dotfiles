@@ -24,12 +24,13 @@
     pkgs.pandoc
     pkgs.devenv
     pkgs.vscode
-    pkgs.alacritty
+    #pkgs.alacritty
     pkgs.kitty
     pkgs.agda
     pkgs.tor-browser-bundle-bin
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
     pkgs.nix-tree
+    pkgs.mpv
   ];
 
 
@@ -70,10 +71,12 @@
     ".config/dunst/dunstrc".source = dotfiles/dunstrc;
     ".config/rofi/config.rasi".source = dotfiles/config.rasi;
     ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
+    ".config/alacritty/alacritty-white.toml".source = dotfiles/alacritty-white.toml;
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
     ".scripts/pomo.sh".source = dotfiles/pomo.sh;
     ".scripts/kitty.sh".source = dotfiles/kitty.sh;
+    ".scripts/al-white".source = dotfiles/al-white;
 
     "bg.png".source = dotfiles/bg.png;
   };
