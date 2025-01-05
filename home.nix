@@ -3,7 +3,8 @@
 {
   home.username = "igor";
   home.homeDirectory = "/home/igor";
-  home.stateVersion = "24.05";
+  #home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   home.packages = [
     pkgs.fzf
@@ -23,10 +24,10 @@
     pkgs.tmuxinator
     pkgs.pandoc
     pkgs.devenv
-    pkgs.vscode
     #pkgs.alacritty
     pkgs.kitty
-    pkgs.agda
+    #pkgs.agda
+    #pkgs.agdaPackages.standard-library
     pkgs.tor-browser-bundle-bin
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
     pkgs.nix-tree

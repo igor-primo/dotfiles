@@ -4,7 +4,10 @@
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="fino-time"
 #ZSH_THEME="imajes"
-ZSH_THEME="lambda"
+#ZSH_THEME="lambda"
+#ZSH_THEME="minimal"
+#ZSH_THEME="kardan"
+ZSH_THEME="sammy"
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
@@ -83,7 +86,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias mpv="mpv --ytdl-raw-options=format=best"
 alias howmanyhosts="while true;do nmap -sP 192.168.1.1/24 | grep \"Nmap done\" | awk '{print $6}' | tr -d '(' | tr -d ')'; sleep 2;done"
 
 [ -f "/home/igor/.ghcup/env" ] && . "/home/igor/.ghcup/env" # ghcup-env
