@@ -18,9 +18,13 @@
     pkgs.direnv                                             # The glorious shell env manager
     pkgs.devenv                                             # It's wrapper
     pkgs.tmux                                               # The glorious terminal multiplexer
-    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
+    pkgs.btop                                               # The glorious terminal system monitor
+    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
     pkgs.mpv                                                # ???
     pkgs.strace                                             # Handy for debugging native bins
+    pkgs.inotify-tools                                      # Handy for creating feedback loops when lsp is not possible
+    pkgs.gdb                                                # The trad native debugger
+    pkgs.radare2                                            # The glorious native debugger
     pkgs.taskwarrior3                                       # Task management with details
     pkgs.khal                                               # Agenda app
     pkgs.jrnl                                               # A journaling app
