@@ -3,87 +3,62 @@
 {
   home.username = "igor";
   home.homeDirectory = "/home/igor";
-  #home.stateVersion = "24.05";
   home.stateVersion = "25.05";
 
   home.packages = [
-    pkgs.fzf
-    pkgs.picom
-    pkgs.zsh
-    pkgs.dunst
-    pkgs.rofi
-    pkgs.feh
-    pkgs.direnv
-    pkgs.xscreensaver
-    pkgs.xbanish
-    pkgs.redshift
-    pkgs.libnotify
-    pkgs.chromium
-    pkgs.ripgrep
-    pkgs.tmux
-    pkgs.tmuxinator
-    pkgs.pandoc
-    pkgs.devenv
-    #pkgs.alacritty
-    pkgs.kitty
-    #pkgs.agda
-    #pkgs.agdaPackages.standard-library
-    pkgs.tor-browser-bundle-bin
+    pkgs.neovim                                             # The glorious text editor
+    pkgs.zsh                                                # The glorious shell
+    pkgs.fzf                                                # The glorious text finder
+    pkgs.ripgrep                                            # The glorious grepper
+    pkgs.bat                                                # The glorious cat
+    pkgs.eza                                                # The glorious ls
+    pkgs.fd                                                 # The glorious find
+    pkgs.zoxide                                             # Better dirs
+    pkgs.starship                                           # Ma prompt
+    pkgs.direnv                                             # The glorious shell env manager
+    pkgs.devenv                                             # It's wrapper
+    pkgs.tmux                                               # The glorious terminal multiplexer
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })
-    pkgs.nix-tree
-    pkgs.mpv
+    pkgs.mpv                                                # ???
+    pkgs.strace                                             # Handy for debugging native bins
+    pkgs.taskwarrior3                                       # Task management with details
+    pkgs.khal                                               # Agenda app
+    pkgs.jrnl                                               # A journaling app
+    pkgs.cargo                                              # In order to install some ad-hoc rust programs
   ];
-
-
-  xsession = {
-    enable = true;
-    windowManager.command = "xmonad";
-    initExtra = "
-      setxkbmap br
-      setxkbmap -option ctrl:swapcaps
-      xset r rate 250 60
-      xset fp+ ~/.nix-profile/share/fonts/truetype/NerdFonts
-      feh --bg-fill ~/bg.png
-
-      #picom --config ~/.picom.conf & disown
-      dunst & disown
-      xscreensaver & disown
-      xbanish & disown
-      acpinot & disown
-      redshift -l 10.5:37.4 -t 5700:4000 -b 1.0:0.6 -g 0.8 -m randr -v & disown
-    ";
-  };
 
   imports = [ ./zsh.nix ];
 
+  # Install dijo
+  # Install wasp
+
   home.file = {
     ".tmux.conf".source = dotfiles/tmux.conf;
-    ".xmonad/xmonad.hs".source = dotfiles/xmonad.hs;
     ".fzf.env".source = dotfiles/fzf.env;
-    ".picom.conf".source = dotfiles/picom.conf;
-    ".xinitrc".source = dotfiles/xinitrc;
     ".zshrc".source = dotfiles/zshrc;
-    ".cwmrc".source = dotfiles/cwmrc;
     ".vimrc".source = dotfiles/vimrc;
+    ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
 
     ".gitconfig".source = dotfiles/gitconfig;
     ".gitignore_global".source = dotfiles/gitignore_global;
 
+    ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
+
+    # The following are, probably, legacy.
+    "bg.png".source = dotfiles/bg.png;
+    ".xmonad/xmonad.hs".source = dotfiles/xmonad.hs;
+    ".picom.conf".source = dotfiles/picom.conf;
+    ".xinitrc".source = dotfiles/xinitrc;
+    ".cwmrc".source = dotfiles/cwmrc;
     ".config/dunst/dunstrc".source = dotfiles/dunstrc;
     ".config/rofi/config.rasi".source = dotfiles/config.rasi;
-    ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
-    ".config/alacritty/alacritty-white.toml".source = dotfiles/alacritty-white.toml;
-
-    ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
     ".scripts/pomo.sh".source = dotfiles/pomo.sh;
     ".scripts/kitty.sh".source = dotfiles/kitty.sh;
     ".scripts/al-white".source = dotfiles/al-white;
-
-    "bg.png".source = dotfiles/bg.png;
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;
