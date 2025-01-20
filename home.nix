@@ -8,6 +8,8 @@
   home.packages = [
     pkgs.neovim                                             # The glorious text editor
     pkgs.zsh                                                # The glorious shell
+    pkgs.nushell                                            # The functional shell
+    pkgs.atuin                                              # The glorious shell history everything
     pkgs.fzf                                                # The glorious text finder
     pkgs.ripgrep                                            # The glorious grepper
     pkgs.bat                                                # The glorious cat
@@ -35,6 +37,7 @@
 
   # Install dijo
   # Install wasp
+  # Install x-cmd
 
   home.file = {
     ".tmux.conf".source = dotfiles/tmux.conf;
