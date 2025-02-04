@@ -2,7 +2,7 @@
 TERM = "xterm-256color"
 
 [window]
-padding.x = 10
+padding.x = 1
 padding.y = 0
 
 decorations = "Buttonless"
@@ -12,4 +12,4 @@ blur = true
 
 [font]
 normal.family = "Inconsolata Nerd Font"
-size = 14
+size = 10

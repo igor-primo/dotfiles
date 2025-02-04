@@ -16,10 +16,14 @@
     pkgs.eza                                                # The glorious ls
     pkgs.fd                                                 # The glorious find
     pkgs.zoxide                                             # Better dirs
+    pkgs.yazi                                               # File manager
     pkgs.starship                                           # Ma prompt
     pkgs.direnv                                             # The glorious shell env manager
     pkgs.devenv                                             # It's wrapper
     pkgs.tmux                                               # The glorious terminal multiplexer
+    pkgs.zellij                                             # Tmux dethroned?
+    pkgs.lazygit                                            # The glorious git frontend
+    pkgs.gitui                                              # Another one
     pkgs.btop                                               # The glorious terminal system monitor
     (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
     pkgs.mpv                                                # ???
@@ -31,6 +35,27 @@
     pkgs.khal                                               # Agenda app
     pkgs.jrnl                                               # A journaling app
     pkgs.cargo                                              # In order to install some ad-hoc rust programs
+    pkgs.feh                                                # Images
+    pkgs.timer                                              # A timer
+    pkgs.gh                                                 # Github on CLI :)
+    pkgs.act                                                # Run Github Actions locally
+    pkgs.dunst
+    pkgs.lazydocker                                         # Sane Docker
+    pkgs.neomutt                                            # Sane e-mail
+    pkgs.isync                                              # Sane e-mail synchronizer
+    pkgs.elinks                                             # Sane browser
+    pkgs.w3m                                             # Sane browser
+
+    # Hyprland / Wayland (For the time being managed by distribution)
+    #pkgs.hyprland
+    #pkgs.waybar
+    #pkgs.kitty
+    #pkgs.wofi
+    #pkgs.hyprpaper
+    #pkgs.hyprlock
+    #pkgs.hypridle
+    #pkgs.hyprshot
+    #pkgs.wlsunset
   ];
 
   imports = [ ./zsh.nix ];
@@ -38,6 +63,7 @@
   # Install dijo
   # Install wasp
   # Install x-cmd
+  # Install base16
 
   home.file = {
     ".tmux.conf".source = dotfiles/tmux.conf;
@@ -52,7 +78,7 @@
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
 
     # The following are, probably, legacy.
-    "bg.png".source = dotfiles/bg.png;
+    ".wallpapers".source = ./wallpapers;
     ".xmonad/xmonad.hs".source = dotfiles/xmonad.hs;
     ".picom.conf".source = dotfiles/picom.conf;
     ".xinitrc".source = dotfiles/xinitrc;

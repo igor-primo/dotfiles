@@ -8,3 +8,5 @@
 	defaultBranch = main
 [core]
 	excludesfile = /home/igor/.gitignore_global
+[diff]
+  tool = nvimdiff
