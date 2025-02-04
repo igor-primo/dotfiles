@@ -25,7 +25,7 @@
     pkgs.lazygit                                            # The glorious git frontend
     pkgs.gitui                                              # Another one
     pkgs.btop                                               # The glorious terminal system monitor
-    (pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
+    #(pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
     pkgs.mpv                                                # ???
     pkgs.strace                                             # Handy for debugging native bins
     pkgs.inotify-tools                                      # Handy for creating feedback loops when lsp is not possible
@@ -71,6 +71,10 @@
     ".zshrc".source = dotfiles/zshrc;
     ".vimrc".source = dotfiles/vimrc;
     ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
+    ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
+    ".config/hypr".source = dotfiles/hypr;
+    ".config/waybar".source = dotfiles/waybar;
+    ".config/wofi".source = dotfiles/wofi;
 
     ".gitconfig".source = dotfiles/gitconfig;
     ".gitignore_global".source = dotfiles/gitignore_global;
