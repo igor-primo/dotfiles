@@ -45,6 +45,7 @@
     pkgs.isync                                              # Sane e-mail synchronizer
     pkgs.elinks                                             # Sane browser
     pkgs.w3m                                             # Sane browser
+    pkgs.ollama                                             # Sane browser
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #pkgs.hyprland
@@ -54,7 +55,7 @@
     #pkgs.hyprpaper
     #pkgs.hyprlock
     #pkgs.hypridle
-    #pkgs.hyprshot
+    pkgs.hyprshot
     #pkgs.wlsunset
   ];
 
