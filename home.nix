@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   home.username = "igor";
@@ -6,7 +6,6 @@
   home.stateVersion = "25.05";
 
   home.packages = [
-    pkgs.neovim                                             # The glorious text editor
     pkgs.zsh                                                # The glorious shell
     pkgs.nushell                                            # The functional shell
     pkgs.atuin                                              # The glorious shell history everything
@@ -69,6 +68,7 @@
     pkgs.flameshot
     pkgs.picom
     pkgs.fish
+    inputs.nixvim.packages."x86_64-linux".default
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #pkgs.hyprland
@@ -124,7 +124,6 @@
     EDITOR = "nvim";
   };
 
-  #services.lorri.enable = true;
-
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 }
