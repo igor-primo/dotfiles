@@ -1,14 +1,12 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/github_light_tritanopia.toml"
+]
+
 [env]
 TERM = "xterm-256color"
 
-[window]
-padding.x = 1
-padding.y = 0
-
 decorations = "Buttonless"
-
-opacity = 0.95
-blur = true
 
 [font]
 normal.family = "Inconsolata Nerd Font"

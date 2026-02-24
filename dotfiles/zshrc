@@ -1,16 +1,17 @@
-zstyle ':omz:update' mode reminder
-zstyle ':omz:update' frequency 13
-
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
-#plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+autoload -Uz compinit
+compinit
 
-source $ZSH/oh-my-zsh.sh
+#plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(ssh-agent aws)
+
 source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $HOME/.zsh/plugins/enhancd/init.sh
+#source $HOME/.zsh/plugins/zsh-notify/notify.plugin.zsh
 
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=pt_BR.UTF-8
@@ -26,12 +27,14 @@ export ARCHFLAGS="-arch x86_64"
 PATH=$HOME/bin:/sbin:/usr/local/bin:$PATH
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 PATH=/home/igor/.scripts:$PATH
+PATH=/home/igor/.opencode/bin:$PATH
 export PATH=/home/igor/go/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 #export TINTED_TMUX_OPTION_STATUSBAR=1
+source $ZSH/oh-my-zsh.sh
 
-export PAGER="bat --theme gruvbox-dark --terminal-width -10 --plain"
+#export PAGER="bat --theme base16 --terminal-width -10 --plain"
 
 [ -f "/home/igor/.ghcup/env" ] && . "/home/igor/.ghcup/env" # ghcup-env
 
@@ -40,11 +43,30 @@ export PAGER="bat --theme gruvbox-dark --terminal-width -10 --plain"
 . "$HOME/.fzf.env"
 # . "$HOME/.base16.env"
 
+#alias light="base16_grayscale-light"
+#alias dark="base16_grayscale-dark"
 alias howmanyhosts="while true;do nmap -sP 192.168.1.1/24 | grep \"Nmap done\" | awk '{print $6}' | tr -d '(' | tr -d ')'; sleep 2;done"
 alias ls="eza --long --header --git --reverse --sort=size --icons=always"
 alias tree="eza --long --header --git --reverse --sort=size --tree --icons=always"
-alias cat="bat --theme gruvbox-dark --terminal-width -10"
+#alias cat="bat --theme base16 --terminal-width -10"
 alias y="yazi"
+alias kh="khal calendar today 2d"
+alias n="nvim"
+alias f="fg"
+alias lg="lazygit"
+alias ta="tmux a"
+alias t="tmux"
+alias kc="kubectl"
+alias e="emacs -nw ."
+alias nw="newsboat"
+alias pv="pipe-viewer -7"
+alias pva="pipe-viewer -7 --no-video"
+alias profile-homolog="export AWS_PROFILE=homolog"
+alias eks-homolog="profile-homolog && aws eks update-kubeconfig --name eks-homolog --region us-east-1"
+alias profile-sandbox="export AWS_PROFILE=sandbox"
+alias eks-sandbox="profile-sandbox && aws eks update-kubeconfig --name eks-sandbox --region us-east-1"
+alias profile-production="export AWS_PROFILE=prod"
+alias eks-production="profile-production && aws eks update-kubeconfig --name eks-production --region us-east-1"
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
@@ -57,11 +79,17 @@ if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/completion.zsh"
 fi
 
-BASE16_SHELL="$HOME/.config/tinted-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        source "$BASE16_SHELL/profile_helper.sh"
-        
-base16_gruvbox-dark-hard
-#base16_catppuccin-mocha
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+precmd () {
+  echo -n -e '\a'
+}
+
+#BASE16_SHELL="$HOME/.config/tinted-shell/"
+#[ -n "$PS1" ] && \
+#    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#        source "$BASE16_SHELL/profile_helper.sh"
 #base16_grayscale-dark
+#base16_black-metal

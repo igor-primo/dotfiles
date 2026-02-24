@@ -48,5 +48,11 @@ GPATH
 GRTAGS
 GTAGS
 tags
+TAGS
 
 ignorepls/
+node_modules/
+.serverless/
+.env
+test-app/
+secrets.env

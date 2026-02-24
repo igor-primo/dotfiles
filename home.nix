@@ -26,7 +26,7 @@
     pkgs.gitui                                              # Another one
     pkgs.btop                                               # The glorious terminal system monitor
     #(pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
-    pkgs.mpv                                                # ???
+    #pkgs.mpv                                                # ???
     pkgs.strace                                             # Handy for debugging native bins
     pkgs.inotify-tools                                      # Handy for creating feedback loops when lsp is not possible
     pkgs.gdb                                                # The trad native debugger
@@ -36,7 +36,7 @@
     pkgs.jrnl                                               # A journaling app
     pkgs.cargo                                              # In order to install some ad-hoc rust programs
     pkgs.feh                                                # Images
-    pkgs.timer                                              # A timer
+    #pkgs.timer                                              # A timer
     pkgs.gh                                                 # Github on CLI :)
     pkgs.act                                                # Run Github Actions locally
     pkgs.dunst
@@ -44,8 +44,31 @@
     pkgs.neomutt                                            # Sane e-mail
     pkgs.isync                                              # Sane e-mail synchronizer
     pkgs.elinks                                             # Sane browser
-    pkgs.w3m                                             # Sane browser
-    pkgs.ollama                                             # Sane browser
+    pkgs.w3m                                                # Sane browser
+    pkgs.universal-ctags
+    #pkgs.fourmolu #too old
+    #pkgs.gnucash
+    pkgs.kubectl
+    pkgs.awscli2
+    pkgs.postgresql
+    pkgs.k9s
+    pkgs.pandoc
+    pkgs.jira-cli-go
+    pkgs.terraform
+    pkgs.kind
+    pkgs.helmfile
+    pkgs.kubernetes-helm
+    pkgs.ngrok
+    pkgs.lorri
+    pkgs.carapace
+    pkgs.actionlint
+    pkgs.calcurse
+    #pkgs.newsboat
+    #pkgs.pipe-viewer
+    pkgs.xbanish
+    pkgs.flameshot
+    pkgs.picom
+    pkgs.fish
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #pkgs.hyprland
@@ -59,7 +82,7 @@
     #pkgs.wlsunset
   ];
 
-  imports = [ ./zsh.nix ];
+  #imports = [ ./zsh.nix ];
 
   # Install dijo
   # Install wasp
@@ -81,6 +104,8 @@
     ".gitignore_global".source = dotfiles/gitignore_global;
 
     ".scripts/install-manual.sh".source = dotfiles/install-manual.sh;
+    ".scripts/remember.sh".source = dotfiles/remember.sh;
+    ".scripts/external_keyboard_script.sh".source = dotfiles/external_keyboard_script.sh;
 
     # The following are, probably, legacy.
     ".wallpapers".source = ./wallpapers;
@@ -98,6 +123,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  #services.lorri.enable = true;
 
   programs.home-manager.enable = true;
 }
