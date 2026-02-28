@@ -134,7 +134,7 @@
     enable = true;
     shellAliases = {
       f = "fg";
-      ls = "eza --long --header --git --reverse --sort=size --icons=always";
+      eza = "eza --long --header --git --reverse --sort=size --icons=always";
       tree = "eza --long --header --git --reverse --sort=size --tree --icons=always";
       y = "yazi";
       n = "nvim";
