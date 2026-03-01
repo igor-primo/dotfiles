@@ -70,6 +70,7 @@
     #pkgs.fish # managed by programs.fish below
     inputs.nixvim.packages."x86_64-linux".default
     inputs.llm-agents.packages."x86_64-linux".copilot-cli
+    pkgs.hledger
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #pkgs.hyprland
