@@ -31,10 +31,11 @@ main = do
             , normalBorderColor = "#435274"
             , focusedBorderColor = "#6f9460"
             , layoutHook =
-                gaps myGaps $
-                    Full
-                        -- \||| magnifier (TwoPane (3 / 100) (1 / 2))
-                        ||| magnifierxy' 1.0 3.0 (ResizableTall 1 (3 / 100) (1 / 2) [])
+                smartSpacing 10 $
+                    gaps myGaps $
+                        Full
+                            ||| (TwoPane (3 / 100) (1 / 2))
+                            ||| (ResizableTall 1 (3 / 100) (1 / 2) [])
             , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
             }
             `removeKeysP` ["M-<Tab>", "M-S-<Tab>"]
