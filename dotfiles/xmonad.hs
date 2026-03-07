@@ -2,6 +2,7 @@
 
 import qualified Data.Map.Strict as M
 import XMonad
+import XMonad.Actions.GroupNavigation
 import XMonad.Actions.TopicSpace
 import XMonad.Config.Kde
 import XMonad.Layout.Gaps
@@ -24,7 +25,7 @@ main = do
     xmonad $
         def
             { modMask = mod4Mask
-            , terminal = "ghostty --theme=GitHub-Light-High-Contrast"
+            , terminal = "ghostty --theme=ayu_light"
             , manageHook = namedScratchpadManageHook scratchpads
             , startupHook = myStartupHook
             , borderWidth = 4
@@ -37,6 +38,7 @@ main = do
                             ||| (TwoPane (3 / 100) (1 / 2))
                             ||| (ResizableTall 1 (3 / 100) (1 / 2) [])
             , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
+            , logHook = historyHook
             }
             `removeKeysP` ["M-<Tab>", "M-S-<Tab>"]
             `additionalKeysP` [ ("M-x", spawn "xscreensaver-command -lock")
@@ -44,10 +46,7 @@ main = do
                               , ("M-s", spawn "firefox")
                               , ("M-a", sendMessage MirrorShrink)
                               , ("M-z", sendMessage MirrorExpand)
-                              , ("M-y", spawn "bash youtube.sh")
                               , ("M-w", spawn "rofi -drun-use-desktop-cache -show combi")
-                              , ("M-p", spawn "bash pomo.sh")
-                              , ("M-o", spawn "pkill -f pomo.sh")
                               , ("M-n", spawn "dunstctl history-pop")
                               , ("M-m", spawn "dunstctl close")
                               , ("M-f", increaseGapHor)
@@ -59,9 +58,9 @@ main = do
                               , ("M-/", namedScratchpadAction scratchpads "business journal")
                               , ("M-;", namedScratchpadAction scratchpads "hoogle")
                               , ("M-.", namedScratchpadAction scratchpads "general terminal")
-                              , ("M1-<Tab>", windows W.focusDown)
+                              , ("M1-<Tab>", nextMatch History (return True))
                               , ("M1-S-<Tab>", windows W.focusUp)
-                              , ("M-<Return>", spawn "ghostty --theme=GitHub-Dark-High-Contrast")
+                              , ("M-<Return>", spawn "ghostty --theme=ayu")
                               ]
   where
     increaseGapHor =

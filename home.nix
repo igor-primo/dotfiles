@@ -127,6 +127,15 @@
     EDITOR = "nvim";
   };
 
+  services.darkman = {
+    enable = true;
+    settings = {
+      usegeoclue = true;
+      dbusserver = true;
+      portal = true;
+    };
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
