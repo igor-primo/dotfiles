@@ -97,6 +97,7 @@
     ".zshrc".source = dotfiles/zshrc;
     ".vimrc".source = dotfiles/vimrc;
     ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
+    ".config/fourmolu/fourmolu.yaml".source = dotfiles/fourmolu.yaml;
     ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
     ".config/hypr".source = dotfiles/hypr;
     ".config/waybar".source = dotfiles/waybar;

@@ -1,0 +1,14 @@
+indentation: 2
+respectful: true
+
+ghc-options:
+  - -XOverloadedLabels
+  - -XTypeApplications
+  - -XRecordWildCards
+  - -XBlockArguments
+  - -XImplicitParams
+  - -XDataKinds
+  - -XTypeOperators
+  - -XMultiParamTypeClasses
+  - -XFunctionalDependencies
+  - -XOverloadedRecordDot 
