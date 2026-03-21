@@ -71,6 +71,7 @@
     inputs.nixvim.packages."x86_64-linux".default
     inputs.llm-agents.packages."x86_64-linux".copilot-cli
     pkgs.hledger
+    pkgs.darkhttpd
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #pkgs.hyprland
@@ -97,7 +98,6 @@
     ".zshrc".source = dotfiles/zshrc;
     ".vimrc".source = dotfiles/vimrc;
     ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
-    ".config/fourmolu/fourmolu.yaml".source = dotfiles/fourmolu.yaml;
     ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
     ".config/hypr".source = dotfiles/hypr;
     ".config/waybar".source = dotfiles/waybar;

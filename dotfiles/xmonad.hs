@@ -25,7 +25,7 @@ main = do
     xmonad $
         def
             { modMask = mod4Mask
-            , terminal = "ghostty --theme=ayu_light"
+            , terminal = "ghostty --theme=zenbones_light"
             , manageHook = namedScratchpadManageHook scratchpads
             , startupHook = myStartupHook
             , borderWidth = 4
@@ -60,7 +60,7 @@ main = do
                               , ("M-.", namedScratchpadAction scratchpads "general terminal")
                               , ("M1-<Tab>", nextMatch History (return True))
                               , ("M1-S-<Tab>", windows W.focusUp)
-                              , ("M-<Return>", spawn "ghostty --theme=ayu")
+                              , ("M-<Return>", spawn "ghostty --theme=zenbones_dark")
                               ]
   where
     increaseGapHor =
@@ -86,7 +86,7 @@ myXPConfig =
         , sorter = fuzzySort
         }
 
-myGaps = [(U, 10), (D, 10), (R, 10), (L, 10)]
+myGaps = [(U, 0), (D, 0), (R, 0), (L, 0)]
 
 myStartupHook :: X ()
 myStartupHook = do
