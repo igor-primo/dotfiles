@@ -5,84 +5,88 @@
   home.homeDirectory = "/home/igor";
   home.stateVersion = "25.05";
 
-  home.packages = [
-    pkgs.zsh # The glorious shell
-    pkgs.nushell # The functional shell
-    pkgs.atuin # The glorious shell history everything
-    pkgs.fzf # The glorious text finder
-    pkgs.ripgrep # The glorious grepper
-    pkgs.bat # The glorious cat
-    pkgs.eza # The glorious ls
-    pkgs.fd # The glorious find
-    pkgs.zoxide # Better dirs
-    pkgs.yazi # File manager
-    pkgs.starship # Ma prompt
-    #pkgs.direnv # managed by programs.direnv below
-    pkgs.devenv # It's wrapper
-    pkgs.tmux # The glorious terminal multiplexer
-    pkgs.zellij # Tmux dethroned?
-    pkgs.lazygit # The glorious git frontend
-    pkgs.gitui # Another one
-    pkgs.btop # The glorious terminal system monitor
-    #(pkgs.nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
-    #pkgs.mpv                                                # ???
-    pkgs.strace # Handy for debugging native bins
-    pkgs.inotify-tools # Handy for creating feedback loops when lsp is not possible
-    pkgs.gdb # The trad native debugger
-    pkgs.radare2 # The glorious native debugger
-    pkgs.taskwarrior3 # Task management with details
-    pkgs.khal # Agenda app
-    pkgs.jrnl # A journaling app
-    pkgs.cargo # In order to install some ad-hoc rust programs
-    pkgs.feh # Images
-    #pkgs.timer                                              # A timer
-    pkgs.gh # Github on CLI :)
-    pkgs.act # Run Github Actions locally
-    pkgs.dunst
-    pkgs.lazydocker # Sane Docker
-    pkgs.neomutt # Sane e-mail
-    pkgs.isync # Sane e-mail synchronizer
-    pkgs.elinks # Sane browser
-    pkgs.w3m # Sane browser
-    pkgs.universal-ctags
-    #pkgs.fourmolu #too old
-    #pkgs.gnucash
-    pkgs.kubectl
-    pkgs.awscli2
-    pkgs.postgresql
-    pkgs.k9s
-    pkgs.pandoc
-    pkgs.jira-cli-go
-    pkgs.terraform
-    pkgs.kind
-    pkgs.helmfile
-    pkgs.kubernetes-helm
-    pkgs.ngrok
-    pkgs.lorri
-    pkgs.carapace
-    pkgs.actionlint
-    pkgs.calcurse
-    #pkgs.newsboat
-    #pkgs.pipe-viewer
-    pkgs.xbanish
-    pkgs.flameshot
-    pkgs.picom
-    #pkgs.fish # managed by programs.fish below
+  home.packages = with pkgs;[
+    zsh # The glorious shell
+    nushell # The functional shell
+    atuin # The glorious shell history everything
+    fzf # The glorious text finder
+    ripgrep # The glorious grepper
+    bat # The glorious cat
+    eza # The glorious ls
+    fd # The glorious find
+    zoxide # Better dirs
+    yazi # File manager
+    starship # Ma prompt
+    #direnv # managed by programs.direnv below
+    devenv # It's wrapper
+    tmux # The glorious terminal multiplexer
+    zellij # Tmux dethroned?
+    lazygit # The glorious git frontend
+    gitui # Another one
+    btop # The glorious terminal system monitor
+    #(nerdfonts.override { fonts = [ "Inconsolata" ]; })# The glorious font
+    #mpv                                                # ???
+    strace # Handy for debugging native bins
+    inotify-tools # Handy for creating feedback loops when lsp is not possible
+    gdb # The trad native debugger
+    radare2 # The glorious native debugger
+    taskwarrior3 # Task management with details
+    khal # Agenda app
+    jrnl # A journaling app
+    cargo # In order to install some ad-hoc rust programs
+    feh # Images
+    #timer                                              # A timer
+    gh # Github on CLI :)
+    act # Run Github Actions locally
+    dunst
+    lazydocker # Sane Docker
+    neomutt # Sane e-mail
+    isync # Sane e-mail synchronizer
+    elinks # Sane browser
+    w3m # Sane browser
+    universal-ctags
+    #fourmolu #too old
+    #gnucash
+    kubectl
+    awscli2
+    postgresql
+    k9s
+    pandoc
+    jira-cli-go
+    terraform
+    kind
+    helmfile
+    kubernetes-helm
+    ngrok
+    lorri
+    carapace
+    actionlint
+    calcurse
+    newsboat
+    #pipe-viewer
+    xbanish
+    flameshot
+    picom
+    #fish # managed by programs.fish below
     inputs.nixvim.packages."x86_64-linux".default
     inputs.llm-agents.packages."x86_64-linux".copilot-cli
-    pkgs.hledger
-    pkgs.darkhttpd
+    inputs.llm-agents.packages."x86_64-linux".opencode
+    #inputs.llm-agents.packages."x86_64-linux".codex
+    hledger
+    darkhttpd
+    libwebp
+    nodejs_24
 
     # Hyprland / Wayland (For the time being managed by distribution)
-    #pkgs.hyprland
-    #pkgs.waybar
-    #pkgs.kitty
-    #pkgs.wofi
-    #pkgs.hyprpaper
-    #pkgs.hyprlock
-    #pkgs.hypridle
-    pkgs.hyprshot
-    #pkgs.wlsunset
+    #hyprland
+    #waybar
+    #kitty
+    #wofi
+    #hyprpaper
+    #hyprlock
+    #hypridle
+    hyprshot
+    #wlsunset
   ];
 
   #imports = [ ./zsh.nix ];
@@ -127,14 +131,7 @@
     EDITOR = "nvim";
   };
 
-  services.darkman = {
-    enable = true;
-    settings = {
-      usegeoclue = true;
-      dbusserver = true;
-      portal = true;
-    };
-  };
+  services.mpris-proxy.enable = true;
 
   programs.direnv = {
     enable = true;
@@ -155,6 +152,7 @@
       nw = "newsboat";
       pv = "pipe-viewer -7";
       pva = "pipe-viewer -7 --no-video";
+      download-sections = ''yt-dlp --force-keyframes-at-cuts --recode-video mp4 -f 232+234 --download-sections "$1" "$2"'';
     };
     plugins = [
       { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }

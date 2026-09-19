@@ -7,6 +7,7 @@ import XMonad.Actions.TopicSpace
 import XMonad.Config.Kde
 import XMonad.Layout.Gaps
 import XMonad.Layout.Magnifier
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
@@ -25,18 +26,15 @@ main = do
     xmonad $
         def
             { modMask = mod4Mask
-            , terminal = "ghostty --theme=zenbones_light"
-            , manageHook = namedScratchpadManageHook scratchpads
+            , terminal = "ghostty --theme=GitHub-Dark-High-Contrast"
+            , manageHook = manageSpawn <+> namedScratchpadManageHook scratchpads
             , startupHook = myStartupHook
             , borderWidth = 4
             , normalBorderColor = "#435274"
             , focusedBorderColor = "#6f9460"
             , layoutHook =
-                smartSpacing 10 $
-                    gaps myGaps $
-                        Full
-                            ||| (TwoPane (3 / 100) (1 / 2))
-                            ||| (ResizableTall 1 (3 / 100) (1 / 2) [])
+                generalLayout
+                    ||| onWorkspace "2" (TwoPane (3 / 100) (1 / 2)) generalLayout
             , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
             , logHook = historyHook
             }
@@ -60,9 +58,15 @@ main = do
                               , ("M-.", namedScratchpadAction scratchpads "general terminal")
                               , ("M1-<Tab>", nextMatch History (return True))
                               , ("M1-S-<Tab>", windows W.focusUp)
-                              , ("M-<Return>", spawn "ghostty --theme=zenbones_dark")
+                              , ("M-<Return>", spawn "ghostty --theme=GitHub-Light-High-Contrast")
                               ]
   where
+    generalLayout =
+        smartSpacing 1 $
+            gaps myGaps $
+                Full
+                    ||| (TwoPane (3 / 100) (1 / 2))
+                    ||| (ResizableTall 1 (3 / 100) (1 / 2) [])
     increaseGapHor =
         sendMessage (IncGap 5 U)
             >> sendMessage (IncGap 5 D)
@@ -97,6 +101,11 @@ myStartupHook = do
     spawnOnce "sleep 2 && /home/igor/.nix-profile/bin/flameshot"
     spawnOnce "sleep 2 && /home/igor/.nix-profile/bin/picom --config=/home/igor/.picom.conf"
     spawnOnce "sleep 2 && /home/igor/.nix-profile/bin/xbanish"
+    spawnOnOnce "1" "firefox"
+    spawnOnOnce "2" $ "zathura " <> root <> "/concursos/CGU/0_-_edital_de_concurso_cgu_001-2021.pdf"
+    spawnOnOnce "2" $ "zathura " <> root <> "/concursos/Direito_Constitucional.pdf"
+  where
+    root = "/home/igor"
 
 scratchpads =
     [ NS "business journal" "ghostty --class='com.igor.journal' -e '/home/igor/.nix-profile/bin/jrnl business'" (className =? "com.igor.journal") myFloat

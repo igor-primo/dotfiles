@@ -1,0 +1,14 @@
+(defcfg
+  fallthrough true
+  input  (device-file "/dev/input/by-id/usb-BY_Tech_Gaming_Keyboard-event-kbd")
+  output (uinput-sink "My KMonad output"
+    "sleep 1 && setxkbmap -option compose:ralt")
+)
+
+(defsrc :name src
+  caps lctl lmet f2 f3
+)
+
+(deflayer saneSuper :source src
+  lctl lmet lctl ~ `
+)

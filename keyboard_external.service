@@ -1,0 +1,13 @@
+[Unit]
+Description=external keyboard kmonad
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/igor/.scripts/external_keyboard_script.sh
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=mylaptop keyboard kmonad
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/kmonad-0.4.4 /home/igor/repos/kmonad/keymap/template/myconfig-normal.kbd
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
