@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/kmonad-0.4.4 /home/igor/repos/kmonad/keymap/template/myconfig-normal.kbd
+ExecStart=/home/igor/.nix-profile/bin/kmonad /home/igor/.config/home-manager/dotfiles/kmonad-normal.kbd
 Restart=always
 User=root
 Group=root

@@ -69,13 +69,12 @@
     picom
     #fish # managed by programs.fish below
     inputs.nixvim.packages."x86_64-linux".default
-    inputs.llm-agents.packages."x86_64-linux".copilot-cli
-    inputs.llm-agents.packages."x86_64-linux".opencode
-    #inputs.llm-agents.packages."x86_64-linux".codex
     hledger
     darkhttpd
     libwebp
     nodejs_24
+    kmonad
+    zathura
 
     # Hyprland / Wayland (For the time being managed by distribution)
     #hyprland
@@ -129,6 +128,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    PATH = "/home/igor/.local/bin:/home/igor/bin:/home/igor/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin";
   };
 
   services.mpris-proxy.enable = true;
